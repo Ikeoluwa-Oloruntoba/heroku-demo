@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Ailead Machine Learning Model</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="https://scontent.fabb1-1.fna.fbcdn.net/v/t1.0-9/97136618_2804678399631032_937402519594729472_n.jpg?_nc_cat=109&_nc_sid=730e14&_nc_eui2=AeEneOJCKrRC1FiiN9M3ghoUuAN_oWIMYxG4A3-hYgxjETISzWieC480P7QJRSbD9vhOA8B8lU0B_3Ol8cea33OH&_nc_oc=AQlfeYUBOFNitY0lRZ8amZbuxth8t0Z5ZJ3-RVOY-9fWnbDnjd8iPVJXrL7yEd8ODbw&_nc_ht=scontent.fabb1-1.fna&oh=287dbb3f824451ea43640dfad1a56ad8&oe=5F194CDC" rel="icon">
+  <link href="https://scontent.fabb1-1.fna.fbcdn.net/v/t1.0-9/97136618_2804678399631032_937402519594729472_n.jpg?_nc_cat=109&_nc_sid=730e14&_nc_eui2=AeEneOJCKrRC1FiiN9M3ghoUuAN_oWIMYxG4A3-hYgxjETISzWieC480P7QJRSbD9vhOA8B8lU0B_3Ol8cea33OH&_nc_oc=AQlfeYUBOFNitY0lRZ8amZbuxth8t0Z5ZJ3-RVOY-9fWnbDnjd8iPVJXrL7yEd8ODbw&_nc_ht=scontent.fabb1-1.fna&oh=287dbb3f824451ea43640dfad1a56ad8&oe=5F194CDC" rel="https://scontent.fabb1-1.fna.fbcdn.net/v/t1.0-9/97136618_2804678399631032_937402519594729472_n.jpg?_nc_cat=109&_nc_sid=730e14&_nc_eui2=AeEneOJCKrRC1FiiN9M3ghoUuAN_oWIMYxG4A3-hYgxjETISzWieC480P7QJRSbD9vhOA8B8lU0B_3Ol8cea33OH&_nc_oc=AQlfeYUBOFNitY0lRZ8amZbuxth8t0Z5ZJ3-RVOY-9fWnbDnjd8iPVJXrL7yEd8ODbw&_nc_ht=scontent.fabb1-1.fna&oh=287dbb3f824451ea43640dfad1a56ad8&oe=5F194CDC">
+
+  <!-- Google Fonts -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/icofont.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/remixicon.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/venobox.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/aos.css')}}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="index.html"><span></span></a></h1>
+        <a href="index.html"><img src="https://scontent.fabb1-1.fna.fbcdn.net/v/t1.0-9/97136618_2804678399631032_937402519594729472_n.jpg?_nc_cat=109&_nc_sid=730e14&_nc_eui2=AeEneOJCKrRC1FiiN9M3ghoUuAN_oWIMYxG4A3-hYgxjETISzWieC480P7QJRSbD9vhOA8B8lU0B_3Ol8cea33OH&_nc_oc=AQlfeYUBOFNitY0lRZ8amZbuxth8t0Z5ZJ3-RVOY-9fWnbDnjd8iPVJXrL7yEd8ODbw&_nc_ht=scontent.fabb1-1.fna&oh=287dbb3f824451ea43640dfad1a56ad8&oe=5F194CDC" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#header">Home</a></li>
+          <li><a href="#services">ML Models</a></li>
+          <li class="get-started"><a href="#about">Get Started</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Machine Learning Model</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">To Identify Best Model To Enhance Term Deposit Sale</h2>
+          <div data-aos="fade-up" data-aos-delay="800">
+            <a href="#about" class="btn-get-started scrollto">Check Term Deposit </a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+          <img src="{{ url_for('static',filename = 'img/hero-img.png')}}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+         <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <br>
+      {{ prediction_text }}
+       </div>
+
+
+  <main id="main">
+
+      <!-- ======= Prediction Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Predict Analysis</h2>
+        </div>
+
+        <form action="{{ url_for('predict')}}"method="POST">
+         <div class="form-group mb-2">
+           <div class="form-group mx-sm-3 mb-">
+             <input class="form-control form-control-lg" type="text" name="duration" placeholder="duration" required="required" />
+           </div>
+           <div class="form-group mx-sm-3 mb-">
+             <input class="form-control form-control-lg" type="text" name="balance" placeholder="balance" required="required" />
+           </div>
+           <div class="form-group mx-sm-3 mb-">
+             <input class="form-control form-control-lg" type="text" name="age" placeholder="age" required="required" />
+           </div>
+           <div class="form-group mx-sm-3 mb-">
+             <input class="form-control form-control-lg" type="text" name="day" placeholder="day" required="required" />
+           </div>
+           <div class="form-group mx-sm-3 mb-">
+             <input class="form-control form-control-lg" type="text" name="poutcome_success" placeholder="poutcome_success" required="required" />
+           </div>
+           <div class="form-group mx-sm-3 mb-">
+             <input class="form-control form-control-lg" type="text" name="pdays" placeholder="pdays" required="required" />
+           </div>
+           <div class="form-group mx-sm-3 mb-">
+             <input class="form-control form-control-lg" type="text" name="campaign" placeholder="campaign" required="required" />
+           </div>
+           <div class="form-group mx-sm-3 mb-">
+               <input class="form-control form-control-lg" type="text" name="housing_yes" placeholder="housing_yes" required="required" />
+           </div>
+
+         </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+
+      <br>
+      <br>
+
+
+
+      </div>
+    </section><!-- Prediction Section -->
+
+    <!-- ======= Machine Learning Models ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Machine Learning Models</h2>
+          <p>Machine Learning Models Used in different Machine Learning algorithm Kernels for this predictive Analysis</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="">K-Nearest Neighbour</a></h4>
+              <p class="description">k-Nearest Neighbor
+                Building the model only consists of storing the training dataset. To make a
+                prediction for a new data point, the algorithm finds the closest data points in the
+                training dataset, it “nearest neighbors”.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="">Linear Regression</a></h4>
+              <p class="description">Linear Regression is a machine learning algorithm based on supervised learning. Linear regression performs the task to predict a dependent variable value (y) based on a given independent variable (x).
+                So, this regression technique finds out a linear relationship between x (input) and y(output).</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="">Logistic Regression</a></h4>
+              <p class="description">Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable.
+                The nature of target or dependent variable is dichotomous, which means there would be only two possible classes. </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="">Decison Tree</a></h4>
+              <p class="description">Decision tree learning is one of the predictive modelling approaches used in statistics,
+                 data mining and machine learning. It uses a decision tree (as a predictive Models as base for its operation ...
+</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Machine Learning Models -->
+
+    <!-- ======= More Machine Learning Models ======= -->
+    <section id="more-services" class="more-services">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card" style='background-image: url({{ url_for('static',filename = 'img/more-services-1.jpg')}});' data-aos="fade-up" data-aos-delay="100">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">XG Boost</a></h5>
+                <p class="card-text">XGBoost (Extreme Gradient Boosting) belongs to a family of boosting algorithms and uses the gradient boosting (GBM) framework at its core</p>
+                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> </a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+            <div class="card" style='background-image: url({{ url_for('static',filename = 'img/more-services-2.jpg')}});' data-aos="fade-up" data-aos-delay="200">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Support Vector Machine</a></h5>
+                <p class="card-text">support-vector machines (SVMs, also support-vector networks) are supervised
+                  learning models with associated learning algorithms that analyze data used for classification and regression analysis.</p>
+                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6 d-flex align-items-stretch mt-4">
+            <div class="card" style='background-image: url({{ url_for('static',filename = 'img/more-services-3.jpg')}});' data-aos="fade-up" data-aos-delay="100">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Random Forest</a></h5>
+                <p class="card-text"> The random forest algorithm builds multiple decision trees and
+                  merges them together to get a more accurate and stable prediction.</p>
+                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> </a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-items-stretch mt-4">
+            <div class="card" style='background-image: url({{ url_for('static',filename = 'img/more-services-4.jpg')}});' data-aos="fade-up" data-aos-delay="200">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Neural Network</a></h5>
+                <p class="card-text">Neural networks are a set of algorithms, modeled loosely after the human brain, that are designed to recognize patterns. Neural networks help us cluster and classify.</p>
+                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End More ML Section -->
+
+        <!-- ======= Ailead Trainees ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Ailead Technolgies Trainees</h2>
+          <p></p>
+        </div>
+
+        <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="testimonial-wrap">
+            <div class="testimonial-item">
+              <img src="https://scontent.fabb1-1.fna.fbcdn.net/v/t1.0-0/s600x600/97103181_2804665199632352_8096421881659260928_n.jpg?_nc_cat=103&_nc_sid=730e14&_nc_eui2=AeF6tf1HJrn_TbJuKt1kPyspnINqZGq2ZzGcg2pkarZnMQyvygk-bB5G8cGqvU9Ev09_enx5wOn6efpjEVmPLOhg&_nc_oc=AQnU6Cz7Bfpjmr3Ifz3nwoz5E2RMuvRu28XjiaxHH08VnvsLYYUGjDB0BkeeGwt6Jrg&_nc_ht=scontent.fabb1-1.fna&_nc_tp=7&oh=c0fc945ac16b5d815e4918a3f6878b56&oe=5F18018A" class="testimonial-img" alt="">
+              <h3>Bakare Opeyemi</h3>
+              <h4>Aileadtech Trainee</h4>
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Machine Models today are top recipe, a lingua franca of machine to man interaction. The methods employed here are same as it applies in the real world settings
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+            </div>
+          </div>
+
+          <div class="testimonial-wrap">
+            <div class="testimonial-item">
+              <img src="https://scontent.fabb1-1.fna.fbcdn.net/v/t1.0-0/p180x540/97099583_2804665172965688_9135381660336914432_n.jpg?_nc_cat=101&_nc_sid=730e14&_nc_eui2=AeE6QfIbZuDD_51hfkvz2NAX_0RqMOEVlTf_RGow4RWVN4LZtcf-DpqfLwn4ind6bgaZhhCDeCaVa0HIud0FkK8k&_nc_oc=AQlGEuzt9SupD8ONm_q995cUn-JmlJarG5PcGa5s_zV6ZkJHfWCWhgB2yMYmNpLtE-8&_nc_ht=scontent.fabb1-1.fna&_nc_tp=6&oh=ef333d68fb22c4e54165f48db06b3331&oe=5F197E15" class="testimonial-img" alt="">
+              <h3>Oloruntoba Ikeoluwa</h3>
+              <h4>Aileadtech Trainee</h4>
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Model Learning Models allow us to dive deep into virtual world of possiblities, I am most thrilled about how machine learning models mimic and understand patterns
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+            </div>
+          </div>
+
+          <div class="testimonial-wrap">
+            <div class="testimonial-item">
+              <img src="https://scontent.fabb1-1.fna.fbcdn.net/v/t1.0-9/96758193_2804665119632360_287484662454943744_n.jpg?_nc_cat=100&_nc_sid=730e14&_nc_eui2=AeHF29XR2FKy7urQ5lLexTO-WAHb08YpQdJYAdvTxilB0ra6IAwZWSrtbqTsH7R6gbqlJLTRAMHIZ0wxiXGvc4mm&_nc_oc=AQmTWhYhuTLvErM3_mOMeiTZWAiMVbJACUnXO0Ws7f_4ktjVHbyiUEYJWLUfU1zdH_0&_nc_ht=scontent.fabb1-1.fna&oh=6421e4a038886535a66a27083cac88c7&oe=5F172B16" class="testimonial-img" alt="">
+              <h3>Ogunbiyi Oluwaseyi</h3>
+              <h4>Aileadtech Trainee</h4>
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              It didn't take much to understand why these models are important and real problem solving utilities. The iterative aspect of machine learning is important because as models are exposed to new data, they are able to independently adapt.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+            </div>
+          </div>
+            </div>
+
+        </div>
+
+    </section><!-- Trainee Section -->
+
+
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-5">
+            <i class="ri-question-line"></i>
+            <h4>What is the difference between supervised and unsupervised machine learning?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              Supervised learning requires training labeled data. For example, in order to do classification (a supervised learning task), you’ll need to first label the data you’ll use to train the model to classify data into your labeled groups. Unsupervised learning, in contrast, does not require labeling data explicitly.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-5">
+            <i class="ri-question-line"></i>
+            <h4>How is KNN different from k-means clustering?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              K-Nearest Neighbors is a supervised classification algorithm, while k-means clustering is an unsupervised clustering algorithm. While the mechanisms may seem similar at first, what this really means is that in order for K-Nearest Neighbors to work, you need labeled data you want to classify an unlabeled point into (thus the nearest neighbor part). K-means clustering requires only a set of unlabeled points and a threshold: the algorithm will take unlabeled points and gradually learn how to cluster them into groups by computing the mean of the distance between different points.The critical difference here is that KNN needs labeled points and is thus supervised learning, while k-means doesn’t — and is thus unsupervised learning.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-5">
+            <i class="ri-question-line"></i>
+            <h4>What is deep learning, and how does it contrast with other machine learning algorithms?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              Deep learning is a subset of machine learning that is concerned with neural networks: how to use backpropagation and certain principles from neuroscience to more accurately model large sets of unlabelled or semi-structured data. In that sense,
+              deep learning represents an unsupervised learning algorithm that learns representations of data through the use of neural nets.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+          <div class="col-lg-5">
+            <i class="ri-question-line"></i>
+            <h4> What cross-validation technique would you use on a time series dataset?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+            Instead of using standard k-folds cross-validation, you have to pay attention to the fact that a time series is not randomly distributed data — it is inherently ordered by chronological order. If a pattern emerges in later time periods for example, your model may still pick up on it even if that effect doesn’t hold in earlier years!
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-lg-5">
+            <i class="ri-question-line"></i>
+            <h4>When should you use classification over regression?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              Classification produces discrete values and dataset to strict categories, while regression gives you continuous results that allow you to better distinguish differences between individual points. You would use classification over regression if you wanted your results to reflect the belongingness of data points in your dataset to certain explicit categories (ex: If you wanted to know whether a name was male or female rather than just how correlated they were with male and female names.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            <strong>Aileadtech</strong>
+          </div>
+          <div class="credits">
+
+            Designed by <a href="https:Aileadtech.com/">Aileadtech</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="#intro" class="scrollto">Home</a>
+                </nav>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- JS Files -->
+
+
+
+  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.easing.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/validate.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.waypoints.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/counterup.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/venobox.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/aos.js')}}"></script>
+
+  <!-- Main JS File -->
+  <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+</body>
+
+</html>
