@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 from flask import Flask, request, render_template, flash
+import os
 
 #
 
@@ -42,4 +43,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    flask_app.run(debug=False)
+    port = int(os.environ.get('PORT', 5000))
+    flask_app.run(host='0.0.0.0', port=port, debug=False)
