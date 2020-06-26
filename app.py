@@ -31,7 +31,7 @@ def predict():
 
     output = prediction[0]
     Answer = ''
-    if output == 0:
+    if output == 1:
         Answer = "Yes"
 
     else:
@@ -43,5 +43,4 @@ def predict():
 
 
 if __name__ == "__main__":
-
-    flask_app.run(debug=False)
+    flask_app.run(host='0.0.0.0', port=5000, debug=True)
