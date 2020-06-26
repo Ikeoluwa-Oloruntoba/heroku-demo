@@ -65,4 +65,4 @@ print(model.predict([[245, 200000, 50, 5, 0, 200, 1, 1]]))
 print(model.predict_proba([[245, 200000, 50, 5, 0, 200, 1, 1]]))
 
 
-# Scroll complete output to view all the accuracy scores and bar graph.
+# Scroll complete output to view all the accuracy scores and bar graph.+
